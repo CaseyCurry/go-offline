@@ -8,7 +8,7 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class AppComponent {
   title = 'app';
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'name', 'gender', 'age'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -21,29 +21,29 @@ export class AppComponent {
 export interface Element {
   name: string;
   position: number;
-  weight: number;
-  symbol: string;
+  gender: string;
+  age: number;
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+  {position: 1, name: 'Bill Smith', gender: 'Male', age: 70},
+  {position: 2, name: 'Helen Baker', gender: 'Female', age: 75},
+  {position: 3, name: 'Barbara Montross', gender: 'Female', age: 82},
+  {position: 4, name: 'Juan Valderroso', gender: 'Male', age: 89},
+  {position: 5, name: 'Beatrice Von Elrod', gender: 'Female', age: 78},
+  {position: 6, name: 'Carl McNamara', gender: 'Male', age: 90},
+  {position: 7, name: 'Nickola Rasputin', gender: 'Female', age: 91},
+  {position: 8, name: 'Olivia Newtons', gender: 'Female', age: 77},
+  {position: 9, name: 'Ollie McDonald', gender: 'Male', age: 84},
+  {position: 10, name: 'Neon Sanders', gender: 'Male', age: 96},
+  {position: 11, name: 'Laura Plante', gender: 'Female', age: 91},
+  {position: 12, name: 'Hulk Hogan', gender: 'Male', age: 79},
+  {position: 13, name: 'Randy Savages', gender: 'Male', age: 83},
+  {position: 14, name: 'Florence Mendelson', gender: 'Female', age: 95},
+  {position: 15, name: 'Gary Coalman', gender: 'Female', age: 89},
+  {position: 16, name: 'Tom Hetty', gender: 'Male', age: 96},
+  {position: 17, name: 'Miguella Jackson', gender: 'Female', age: 93},
+  {position: 18, name: 'Aragona Nonna', gender: 'Female', age: 88},
+  {position: 19, name: 'Danny Poteet', gender: 'Male', age: 84},
+  {position: 20, name: 'Cal Pipken', gender: 'Male', age: 91},
 ];
