@@ -1,32 +1,71 @@
-<div class="example-container mat-elevation-z8">
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Add New Member</h3>
+              <form>
+                <div class="form-row">
+                <div class="col">
+               <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+               </div>
+                </div>
+              <div class="col">
+               <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" class="form-control" id="gender">
+               </div>
+              </div>
+              <div class="col">
+               <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age">
+               </div>
+              </div>
+              </div>
+          </form>
+        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-link">Cancel</button>				
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+          <div class="example-container mat-elevation-z8">
 
-  <mat-table #table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="gender">
-      <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="age">
-      <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>
+              <mat-table #table [dataSource]="dataSource">
+            
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="gender">
+                  <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="age">
+                  <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+      </div>
+    </div>
+  </div>
