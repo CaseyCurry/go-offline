@@ -1,19 +1,134 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Go Offline</title>
-  <base href="/">
+<!DOCTYPE html>
+<html>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+  <title>go-offline</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    ul {
+      list-style: none;
+    }
+  </style>
 </head>
+
 <body>
-  <app-root></app-root>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Add New Member</h3>
+            <form>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input type="text" class="form-control" id="gender">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" id="age">
+                  </div>
+                </div>
+              </div>
+            </form>
+            <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
+            <button type="button" class="btn btn-link">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <div class="example-container mat-elevation-z8">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const apiHost = "http://54.244.61.77:8080";
+
+    const list = document.getElementsByClassName("example-container")[0].children[0];
+
+    const addHeader = () => {
+      const isHeader = true;
+      addToList("Position", "Name", "Gender", "Age", isHeader);
+    };
+
+    const addToList = (position, name, gender, age, isHeader) => {
+      const item = document.createElement("li");
+      item.classList.add("row");
+      item.innerHTML =
+        `<span class="col-12 col-sm-2">${position}</span>
+        <span class="col-12 col-sm-5">${name}</span>
+        <span class="col-12 col-sm-3">${gender}</span>
+        <span class="col-12 col-sm-2">${age}</span>`;
+      if (isHeader) {
+        item.classList.add("header");
+      }
+      list.insertBefore(item, list.children[1]);
+    };
+
+    const getMembers = () => {
+      fetch(`${apiHost}/api/members`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((members) => {
+          const sorted = members.sort((a, b) => {
+            return (a.position > b.position) ?
+              1 :
+              (b.position > a.position ? -1 : 0);
+          });
+          sorted.forEach(x => {
+            addToList(x.position, x.name, x.gender, x.age);
+          })
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    const addMember = () => {
+      const name = document.getElementById("name").value;
+      const gender = document.getElementById("gender").value;
+      const age = document.getElementById("age").value;
+      const member = {
+        name,
+        gender,
+        age
+      };
+      return fetch(`${apiHost}/api/members`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(member)
+        })
+        .then((response) => response.json())
+        .then((response) => {
+          addToList(response.position, member.name, member.gender, member.age);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    addHeader();
+    getMembers();
+    document.getElementById("submitButton")
+      .addEventListener("click", addMember);
+  </script>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </html>
