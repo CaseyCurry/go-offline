@@ -1,0 +1,11 @@
+ul {
+  list-style: none;
+}
+
+.header {
+  background: lightgrey;
+}
+
+.unsynced {
+  background: #ffff66;
+}
