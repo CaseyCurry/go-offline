@@ -1,3 +1,5 @@
+var cacheName = "go-offline-cache-v1";
+
 self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
@@ -6,6 +8,31 @@ self.addEventListener("activate", (event) => {
   if (self.clients && clients.claim) {
     clients.claim();
   }
+});
+
+self.addEventListener("fetch", function(event) {
+  event.respondWith(caches.match(event.request)
+    .then((response) => {
+      if (response && !navigator.onLine) {
+        return response;
+      }
+      const fetchRequest = event.request.clone();
+      return fetch(fetchRequest)
+        .then(
+          function(response) {
+            if (!response || response.status !== 200) {
+              return response;
+            }
+            const responseToCache = response.clone();
+            caches.open(cacheName)
+              .then(function(cache) {
+                cache.put(event.request, responseToCache);
+              });
+            return response;
+          }
+        );
+    })
+  );
 });
 
 const pendingMembers = {};
