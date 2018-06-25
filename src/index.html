@@ -2,18 +2,26 @@
 <html>
 
 <head>
-  <title>go-offline</title>
+  <title>Go Offline</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./nh-style.css" />
 </head>
 
 <body>
+  
+<nav class="navbar navbar-brand">
+  <img class src="https://esdnonprod.navihealth.us/assets/nH-icon.svg" height="68px">
+  <a href="#" class="master-header-title">naviHealth OFFLINE</a>
+</nav>
+						
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8 col-sm-12">
+      <div class="col-sm-12">
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title">Add New Member</h3>
+            <span class="card-title">Add New Member</span>
+            <div class="bump"></div>
             <form>
               <div class="form-row">
                 <div class="col">
@@ -36,14 +44,16 @@
                 </div>
               </div>
             </form>
-            <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
-            <button type="button" class="btn btn-link">Cancel</button>
+            <div class="bump"></div>
+            <button type="button" class="btn waves-effect waves-light" id="submitButton">Submit</button>
+            <button type="button" class="btn-flat waves-effect">Cancel</button>
           </div>
         </div>
       </div>
     </div>
+    <div class="bump"></div>
     <div class="row">
-      <div class="col-md-8 col-sm-12">
+      <div class="col-sm-12">
         <div class="example-container mat-elevation-z8">
           <ul>
           </ul>

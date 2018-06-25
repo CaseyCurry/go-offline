@@ -3,7 +3,8 @@ ul {
 }
 
 .header {
-  background: lightgrey;
+  background: #0057b8;
+  color: #fff;
 }
 
 .unsynced {
